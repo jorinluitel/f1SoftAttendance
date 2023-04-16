@@ -1,0 +1,41 @@
+<div class="login-wrapper">
+    <div class="container">
+        <div class="login-image-form">
+            <div class="login-image">
+                <img src="../../../assets/login-image.jpg" alt="">
+                <p class="hint">Use username: User1 & password: password1</p>
+            </div>
+            <div class="login-form-wrap">
+                <h2 class="login-title">Login Form</h2>
+                <form (ngSubmit)="onSubmit()">
+                    <!-- username field -->
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>User Name</mat-label>
+                        <input type="text" name="username" [(ngModel)]="username" required matInput placeholder="Enter Username">
+                        <mat-hint>Valid User Name</mat-hint>
+                    </mat-form-field>
+                    
+                    <!-- password field -->
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>User Name</mat-label>
+                        <input type="password" name="password" [(ngModel)]="password" required matInput placeholder="Enter Password">
+                    </mat-form-field>
+                    
+                    <button mat-raised-button color="primary" type="submit">Submit</button>
+                  
+                    <div *ngIf="errorMessage" class="error-message">
+                      {{ errorMessage }}
+                    </div>
+                    <div *ngIf="successMessage" class="success-message">
+                      {{ successMessage }}
+                    </div>
+                    
+                  </form>
+                  
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
