@@ -1,0 +1,39 @@
+<div class="dashboard-wrapper">
+  <div class="dash-sidebar">
+    <div class="sidebar-inner">
+      <div class="checkin-out-btn-wrap">
+        <button mat-raised-button color="primary" class="checkin-btn" [disabled]="!isLoggedIn || !isBeforeCheckinTime() || hasCheckedIn()" (click)="checkin()">Check In</button>
+        <button mat-raised-button color="accent" class="checkout-btn" [disabled]="!isLoggedIn || !hasCheckedIn() || isBeforeCheckinTime() || isAfterCheckinTime()" (click)="checkout()">Check Out</button>
+      </div>
+    </div>
+  </div>
+  <div class="main-panel">
+    <div class="user-stat">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">User attendance</h4>
+          <p class="card-category">Shows user check-in details</p>
+        </div>
+        <div class="card-body table-responsive">
+          <table mat-table class="table table-hover">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Check-In Time</th>
+                <th>Check-Out Time</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let attendance of userAttendance">
+                <td>{{ attendance.date }}</td>
+                <td>{{ attendance.checkin || 'N/A' }}</td>
+                <td>{{ attendance.checkout || 'N/A' }}</td>
+              </tr>
+            </tbody>
+          </table>
+          <p *ngIf="!userAttendance.length">No attendance data available.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
